@@ -8,26 +8,20 @@ Freud believed that these three elements of personality interact in ways that ha
 As a product of ego, id and biological imperatives, human behavior can be seen as a result of a dynamic balance between these different forces. Sometimes, the id may dominate and lead to impulsive or irrational actions. Sometimes, the superego may dominate and lead to guilt or anxiety. Sometimes, the ego may dominate and lead to rational or adaptive actions. Freud suggested that a healthy personality is one that maintains a harmonious balance between these three elements
 
 # Response behaviour architecture
-st=>start: New event
-op1=>operation: Id reacts based on pleasure principle
-op2=>operation: Ego evaluates reality and consequences
-op3=>operation: Superego judges morality and ideals
-cond1=>condition: Id's demand is realistic and moral?
-cond2=>condition: Ego's solution is satisfying and moral?
-cond3=>condition: Superego's standard is realistic and satisfying?
-out1=>output: Impulsive action
-out2=>output: Rational action
-out3=>output: Moral action
-out4=>output: Anxiety or guilt
-out5=>output: Defense mechanisms
-
-st->op1->cond1
-cond1(yes)->out1
-cond1(no)->op2->cond2
-cond2(yes)->out2
-cond2(no)->op3->cond3
-cond3(yes)->out3
-cond3(no)->out4->out5
+```mermaid
+flowchart TD
+    st[New event] --> op1[Id reacts based on pleasure principle]
+    op1 --> cond1{Id's demand is realistic and moral?}
+    cond1 -->|Yes| out1[Impulsive action]
+    cond1 -->|No| op2[Ego evaluates reality and consequences]
+    op2 --> cond2{Ego's solution is satisfying and moral?}
+    cond2 -->|Yes| out2[Rational action]
+    cond2 -->|No| op3[Superego judges morality and ideals]
+    op3 --> cond3{Superego's standard is realistic and satisfying?}
+    cond3 -->|Yes| out3[Moral action]
+    cond3 -->|No| out4[Anxiety or guilt]
+    out4 --> out5[Defense mechanisms]
+```
 
 # Steps
 - Define the id, ego and superego as separate modules or agents that can communicate with each other and have access to a common memory and perception system.
